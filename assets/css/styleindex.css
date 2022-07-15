@@ -789,7 +789,7 @@ html, body {
 }
 
 body{
-    background: url(../img/tress.jpeg) no-repeat center / cover; 
+    background: url(../img/trees.jpeg) no-repeat center / cover; 
     background-attachment: fixed;
 }
 
@@ -1326,8 +1326,8 @@ a.linkedin-bg:hover {
 }
 
 .blog-post{
-     backdrop-filter: blur(68px);
-    background-color: rgba(255,255,255,0.5);
+     backdrop-filter: blur(20px);
+    background-color: rgba(255,255,255,0.1);
     border-radius: 10px;
     margin: auto;
 }
