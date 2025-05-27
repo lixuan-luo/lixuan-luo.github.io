@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="staticrypt-html">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mallows Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Prevent caching -->
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
+    
+    <link rel="icon" href="assets/logo.png" type="image/x-icon" />
+    
+    <style>
+      #poem_text {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+/* Loading Screen */
+.staticrypt-spinner-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #fff5f8;
+}
+.staticrypt-spinner-container img {
+  width: 70%;
+  height: auto;
+}
+
+/* Poem Display */
+.poem-container {
+  display: none;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 120%;
+  color: #c2185b;
+  font-family: 'Inter', sans-serif;
+  background: #fff5f8;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+  margin: auto;
+}
+
+.typing {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Main Page Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff5f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin: 0;
+}
+
+.staticrypt-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Form Styling */
+.staticrypt-form {
+  width: 70%;
+  max-width: 450px;
+  padding: 35px;
+  background: #ffe3eb;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  font-size: 18px;
+  margin-bottom: 20%;
+  margin: auto;
+}
+
+/* Title */
+.staticrypt-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #c2185b;
+  margin-bottom: 20px;
+}
+
+/* Password Input */
+input[type="password"] {
+  width: 90%;
+  padding: 14px;
+  border: 1px solid #f8a1c4;
+  font-size: 17px;
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+  text-align: center;
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+
+input[type="password"]:focus {
+  border-color: #ff4081;
+}
+
+/* Enter Button */
+.staticrypt-decrypt-button {
+  width: 96%;
+  padding: 14px;
+  background: #ff4081;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.staticrypt-decrypt-button:hover {
+  background: #e91e63;
+}
+
+/* Footer */
+.staticrypt-footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #c2185b;
+}
+    </style>
+  </head>
+
+  <body class="staticrypt-body">
+    
+    <body class="staticrypt-body">
+
+
+   <!-- Loading Animation -->
+    <div id="staticrypt_loading" class="staticrypt-spinner-container">
+      <div style="text-align: center;">
+        <img src="assets/cat2.gif" alt="Loading..." />
+        <p style="margin-top: 10px; font-size: 18px; color: #c2185b; font-weight: 500; font-family: 'Inter', sans-serif;">
+          Please wait, loading... 🐾
+        </p>
+      </div>
+    </div>
+    
+    <!-- Poem Display -->
+    <div id="poem_display" class="poem-container">
+      <p id="poem_text" class="typing"></p>
+    </div>
+
+
+    <!-- Main Content -->
+    <div id="staticrypt_content" class="staticrypt-content">
+      <div class="staticrypt-form">
+        <p class="staticrypt-title">Hi, Fate!</p>
+        <p>Please enter your password to login.</p>
+        
+
+        <form id="staticrypt-form">
+          <input id="staticrypt-password" type="password" placeholder="Password" autofocus />
+          <button type="submit" class="staticrypt-decrypt-button">Enter</button>
+        </form>
+
+        <p id="error-message" style="color: red; display: none;">Incorrect password. Try again.</p>
+      </div>
+    </div>
+
+    <footer class="staticrypt-footer">
+      <p style="text-align: center;">All rights reserved &copy; Mallows 2025</p>
+    </footer>
+
+    <script>
+      // Simulated password (change this to an actual hash verification)
+      const correctPassword = "Tequila Pineapple";
+
+      // Function to handle login attempts
+      document.getElementById("staticrypt-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const passwordInput = document.getElementById("staticrypt-password").value;
+
+        if (passwordInput === correctPassword) {
+          sendTimestamp("Success");
+          alert("Login Successful!");
+          window.location.href = "main.html"; // Redirect to actual content
+        } else {
+          sendTimestamp("Failure");
+          document.getElementById("error-message").style.display = "block";
+        }
+      });
+
+      // Function to log attempts to Google Sheet
+      async function sendTimestamp(status) {
+        const timestamp = new Date().toISOString();
+        const userAgent = navigator.userAgent;
+        const ipResponse = await fetch("https://api64.ipify.org?format=json"); // Get user IP
+        const ipData = await ipResponse.json();
+        const userIP = ipData.ip;
+        
+        const url = "https://script.google.com/macros/s/AKfycbzDXhoCxfWZsnMBi3Bdy0TUibVk2hUoW3uUkJPtMFIqgmQvn8ZJqbToj2YDdRxyTZEvBQ/exec";
+        
+        try {
+          await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ timestamp, userIP, userAgent, status })
+          });
+        } catch (error) {
+          console.error("Error sending timestamp:", error);
+        }
+      }
+
+         window.onload = function () {
+  setTimeout(() => {
+    document.getElementById("staticrypt_loading").style.display = "none";
+    document.getElementById("poem_display").style.display = "flex";
+
+    // Ensure the poem container is empty before typing starts
+    document.getElementById("poem_text").innerHTML = "";
+    
+    fadeInPoem();
+  }, 2500);
+};
+
+const poemLines = [
+  "With each 120° turn leading to a new path,", 
+  "I want you to be my constant,",
+  "at every corner,",
+  "in every moment,",
+  "through every shift of time’s infinite design.",
+  " ",
+  "- Neil",
+];
+
+function fadeInPoem() {
+  const poemText = document.getElementById("poem_text");
+  
+  // Combine all lines into a single HTML string with <div> line breaks
+  poemLines.forEach(line => {
+    const lineElement = document.createElement("div");
+    lineElement.textContent = line;
+    poemText.appendChild(lineElement);
+  });
+
+  // Set initial opacity and transition
+  poemText.style.opacity = 0;
+  poemText.style.transition = "opacity 1.5s ease";
+
+  // Trigger fade-in
+  requestAnimationFrame(() => {
+    poemText.style.opacity = 1;
+  });
+
+  // After fade-in and 3-second pause, hide and show new content
+  setTimeout(() => {
+    document.getElementById("poem_display").style.display = "none";
+    document.getElementById("staticrypt_content").style.display = "block";
+  }, 3000); // 1.5s fade + 3s pause
+}
+
+
+    </script>
+  </body>
+</html>
