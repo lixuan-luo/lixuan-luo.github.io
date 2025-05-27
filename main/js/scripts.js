@@ -17,17 +17,17 @@ window.onload = function() {
   }
 
   var messages = [
-    'Fate!!!',
-    'Hiii',
-    'I made you something! I know this is long, long, long overdue na hehe.  It\'s not finished yet, but you can expect to see some few stuff here already.',
-    'Inside, you’ll find pieces of me. Our story. My thoughts, the things I’ve learned about you, the moments that made me fall for you, and everything I love about you.',
-    'It’s a collection of us, of the way you make my world feel a lot brighter.',
-    'I hope you’ll love it as much as I loved making it for you.',
-    'Oh and',
+    "Fate!!!",
+    "Hiii",
+    "I made you something! I know this is long, long, long overdue na hehe.  It\'s not finished yet, but you can expect to see some few stuff here already.",
+    "Inside, you’ll find pieces of me. Our story. My thoughts, the things I’ve learned about you, the moments that made me fall for you, and everything I love about you.",
+    "It’s a collection of us, of the way you make my world feel a lot brighter.",
+    "I hope you’ll love it as much as I loved making it for you.",
+    "Oh and",
     getCurrentTime(),
-    'I miss youuuu! Can\'t wait to see you again after this break',
-    'I love you so muchhh, my baby, my sweet Fate',
-    '~ Neil ❤️',
+    "I miss youuuu! Can\'t wait to see you again after this break",
+    "I love you so muchhh, my baby, my sweet Fate",
+    "~ Neil ❤️",
     '<a href="part1.html" style="text-decoration: none; color: purple;" id= "yes-button" class="yes-button" onclick="handleYesClick()">(Next Page) Where it All Began...</a>',
   '<em><a href="part1.html" style="text-decoration: none; color: Black;">Skip to Parts: </a><br><a href="part1.html" style="text-decoration: none; color: purple;" id= "yes-button" class="yes-button" onclick="handleYesClick()">P1: Where it all began</a><br><a href="part2.html" style="text-decoration: none; color: purple;" id= "yes-button" class="yes-button" onclick="handleYesClick()">P2: Chaya Lunch Date</a></em>',
   ]
