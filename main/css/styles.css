@@ -1,10 +1,10 @@
 :root {
   font-size: 1.125rem;
   --bg0: #fff5f8;
-  --bg1: #fff5f8;
-  --fg0: #fff5f8;
-  --fg1: #fff5f8;
-  --a0: #fff5f8;
+    --bg1: #ffe3eb;
+    --fg0: #000000;
+    --fg1: rgba(206,206,206,206);
+    --a0: #ffe3eb;
 }
 @media (prefers-color-scheme: dark) {
   :root {
