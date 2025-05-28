@@ -179,8 +179,6 @@ window.onload = function() {
 
   sendMessages();
 
-}
-
 let messageIndex = 0;
 
 function handleNoClick() {
