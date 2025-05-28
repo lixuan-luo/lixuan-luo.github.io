@@ -4,7 +4,7 @@ window.onload = function() {
   var typingSpeed = 1;
   var loadingText = '<b>•</b><b>•</b><b>•</b>';
   var messageIndex = 0;
-}
+
   var getCurrentTime = function() {
     var date = new Date();
     var hours =  date.getHours();
@@ -30,7 +30,7 @@ window.onload = function() {
     '~ Neil ❤️',
     '<a href="part1.html" style="text-decoration: none; color: purple;" id= "yes-button" class="yes-button" onclick="handleYesClick()">(Next Page) Where it All Began...</a>',
   '<em><a href="part1.html" style="text-decoration: none; color: Black;">Skip to Parts: </a><br><a href="part1.html" style="text-decoration: none; color: purple;" id= "yes-button" class="yes-button" onclick="handleYesClick()">P1: Where it all began</a><br><a href="part2.html" style="text-decoration: none; color: purple;" id= "yes-button" class="yes-button" onclick="handleYesClick()">P2: Chaya Lunch Date</a></em>',
-  ];
+  ]
 
 
   var getFontSize = function() {
@@ -86,7 +86,8 @@ window.onload = function() {
   }
 
   var sendMessage = function(message, position) {
-    var loadingDuration = (message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed) + 5;
+typingSpeed = 1; // set typingSpeed first
+var loadingDuration = (message.replace(/<(?:.|\n)*?>/gm, '').length * typingSpeed) + 5;
     var elements = createBubbleElements(message, position);
     messagesEl.appendChild(elements.bubble);
     messagesEl.appendChild(document.createElement('br'));
@@ -169,6 +170,7 @@ window.onload = function() {
     }, loadingDuration - 50);
   }
 
+
   var sendMessages = function() {
     var message = messages[messageIndex];
     if (!message) return;
@@ -178,8 +180,6 @@ window.onload = function() {
   }
 
   sendMessages();
-
-let messageIndex = 0;
 
 function handleNoClick() {
     const noButton = document.querySelector('.no-button');
@@ -194,4 +194,4 @@ function handleYesClick() {
     fetch("https://script.google.com/macros/s/AKfycbznfjxS6xmKGeDq11WVVFL-fuVVTbylbUWTn4EGXASyRcoZmfP82CYtWnPXzI9FOvbJiQ/exec")
     alert("Six parts. Six sides. Our story. The story of how we met, fell quietly, stayed, and kept making each other smile. A story of how everything became as it was, only very slightly different. This is us.");
     window.location.href = "yes_page.html";
-}
+}}
