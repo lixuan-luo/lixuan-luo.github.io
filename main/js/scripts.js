@@ -4,7 +4,7 @@ window.onload = function() {
   var typingSpeed = 1;
   var loadingText = '<b>•</b><b>•</b><b>•</b>';
   var messageIndex = 0;
-
+}
   var getCurrentTime = function() {
     var date = new Date();
     var hours =  date.getHours();
